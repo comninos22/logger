@@ -1,4 +1,5 @@
 <?php
+
 namespace Logger;
 
 class TextLogger implements ITextLogger
@@ -10,7 +11,7 @@ class TextLogger implements ITextLogger
     {
         $this->setLogFolder($logFolder);
         $this->setFilenameConvention("daily");
-        $this->basepath = "/var/www/html/current/log";
+        $this->basepath = TextConstants::PATH;
     }
     function log($data, $topic, $e = 0)
     {
