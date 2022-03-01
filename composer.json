@@ -1,6 +1,5 @@
 {
-    "name": "logger/core",
-    "version": "1",
+    "name": "logler/core",
     "autoload": {
         "psr-4": {
             "Logger\\": "src/"
