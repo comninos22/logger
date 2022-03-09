@@ -7,11 +7,10 @@ use Logger\Adapters\DBLogger;
 use Logger\Adapters\FileStoreLogger;
 use Logger\Adapters\AWSLogger;
 use Logger\Interfaces\ILoggerFacade;
-use Logger\Interfaces\ILogger;
 
 class GeneralLogger implements ILoggerFacade
 {
-    public ILogger $logger;
+    public $logger;
 
     function __construct($type, $collection)
     {
