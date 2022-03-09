@@ -5,7 +5,7 @@ namespace Logger\Connections;
 use \PDO as PDO;
 use \PDOException as PDOException;
 use \Exception as Exception;
-use Logger\SqlConstants;
+use Logger\Constants\SqlConstants;
 
 class DB
 {
