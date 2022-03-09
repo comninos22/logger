@@ -56,7 +56,6 @@ class TextLogger implements ITextLogger
     }
     private function createFolderIfNotExists()
     {
-        echo $this->getFullPath();
         if (!file_exists($this->getFullPath())) {
             mkdir($this->getFullPath(), 0777, true);
         }
