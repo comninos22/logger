@@ -1,5 +1,5 @@
 <?php
-namespace Logger;
+namespace Logger\Interfaces;
 
 interface IDBLogger extends ILogger
 {

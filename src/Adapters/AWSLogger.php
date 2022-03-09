@@ -1,6 +1,8 @@
 <?php
 
-namespace Logger;
+namespace Logger\Adapters;
+
+use Logger\Interfaces\IAWSLogger;
 
 class AWSLogger implements IAWSLogger
 {

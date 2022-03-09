@@ -1,6 +1,6 @@
 <?php
 
-namespace Logger;
+namespace Logger\Interfaces;
 
 interface IAWSLogger extends ILogger
 {
