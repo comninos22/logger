@@ -3,6 +3,7 @@
 namespace Logger\Adapters;
 
 use Logger\Interfaces\ITextLogger;
+use Logger\Constants\TextConstants;
 
 class TextLogger implements ITextLogger
 {
@@ -13,11 +14,11 @@ class TextLogger implements ITextLogger
     {
         $this->setLogFolder($logFolder);
         $this->setFilenameConvention("daily");
-        $this->basepath = "/var/www/html/current/log";
+        $this->basepath = TextConstants::PATH;
     }
     function log($data, $topic, $e = 0)
     {
-        $this->createFolderIfNotExists($topic);
+        $this->createFolderIfNotExists();
         if (!is_array($data)) {
             $data = ['message' => $data];
         }
@@ -25,6 +26,7 @@ class TextLogger implements ITextLogger
         while (strlen($s) < 40) {
             $s .= " ";
         }
+        
         file_put_contents($this->getFullPath() . $this->filename, $s .  json_encode($data)  . PHP_EOL, FILE_APPEND);
     }
     public function changeCollection($s)
@@ -52,8 +54,9 @@ class TextLogger implements ITextLogger
     {
         $this->filename = $s . ".log";
     }
-    private function createFolderIfNotExists($topic)
+    private function createFolderIfNotExists()
     {
+        echo $this->getFullPath();
         if (!file_exists($this->getFullPath())) {
             mkdir($this->getFullPath(), 0777, true);
         }
