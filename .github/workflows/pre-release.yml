@@ -9,14 +9,7 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: test vars
-        run: | 
-          if ${{ env.TYPE != 'minor' && env.TYPE != 'major' }}; then
-            echo "TYPE=patch" >> $GITHUB_ENV
-          fi
-      - name: test previous step
-        run: echo $TYPE;
       - name: release default
         uses: rymndhng/release-on-push-action@master
         with:
-          bump_version_scheme: ${{ env.TYPE }}
+          bump_version_scheme: patch
