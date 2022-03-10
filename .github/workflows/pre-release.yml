@@ -9,6 +9,13 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: rymndhng/release-on-push-action@master
+      - name: release_as_stated
+        if: ${{ $TYPE == "minor" || $TYPE == "major" }}
+        uses: rymndhng/release-on-push-action@master
         with:
-          bump_version_scheme: minor
+          bump_version_scheme: $TYPE
+      - name: release_default
+        if: ${{ failure() }}
+        uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: patch
