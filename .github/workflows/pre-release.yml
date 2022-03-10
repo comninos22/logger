@@ -19,4 +19,4 @@ jobs:
       - name: release default
         uses: rymndhng/release-on-push-action@master
         with:
-          bump_version_scheme: $TYPE
+          bump_version_scheme: ${{ env.TYPE }}
