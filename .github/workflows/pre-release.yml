@@ -11,17 +11,12 @@ jobs:
     steps:
       - name: test vars
         run: | 
-          echo ${{ env.TYPE }};
-          echo $TYPE
-      - name: release as stated
-        if: ${{ env.TYPE == 'minor' || env.TYPE == 'major' }}
+          if ${{ env.TYPE != 'minor' && env.TYPE != 'major' }} then;
+            $TYPE='patch';
+          fi;
+      - name: test previous step
+        run: echo $TYPE;
+      - name: release default
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: $TYPE
-      - name: test hook
-        run: echo ${{ job.status }}
-      - name: release default
-        if: always()
-        uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: patch
