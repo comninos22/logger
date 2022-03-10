@@ -15,7 +15,7 @@ jobs:
         with:
           bump_version_scheme: $TYPE
       - name: release_default
-        if: ${{ failure() }}
+        if: failure() 
         uses: rymndhng/release-on-push-action@master
         with:
           bump_version_scheme: patch
