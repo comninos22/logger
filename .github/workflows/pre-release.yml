@@ -12,7 +12,7 @@ jobs:
       - name: test vars
         run: | 
           if ${{ env.TYPE != 'minor' && env.TYPE != 'major' }}; then
-            $TYPE="patch"
+            echo "TYPE=patch" >> $GITHUB_ENV
           fi
       - name: test previous step
         run: echo $TYPE;
