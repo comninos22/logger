@@ -1,23 +1,14 @@
----
-name: "pre-release"
-
-on:
+on: 
   push:
     branches:
-      - "master"
+      - master
 
 jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
-
+  release-on-push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: rymndhng/release-on-push-action@master
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Development Build"
-          files: |
-            LICENSE
-            *.jar
+          bump_version_scheme: minor
