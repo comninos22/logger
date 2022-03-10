@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: test vars
         run: | 
-          echo env.TYPE;
+          echo ${{ env.TYPE }};
           echo $TYPE
       - name: release as stated
         if: ${{ env.TYPE == 'minor' || env.TYPE == 'major' }}
